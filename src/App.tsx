@@ -1,15 +1,8 @@
-import { useState } from "react";
+import Container from "./components/home/container/container";
 
 function App() {
-  const [count, setCount] = useState<number>(0);
 
-  return (
-    <div>
-      <h1>سلام تایپ‌اسکریپت!</h1>
-      <p>مقدار شمارنده: {count}</p>
-      <button onClick={() => setCount(count + 1)}>افزایش</button>
-    </div>
-  );
+  return <Container></Container>
 }
 
 export default App;
