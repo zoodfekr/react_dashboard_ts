@@ -1,14 +1,14 @@
+import { useState } from "react";
 import Appbar from "../appbar/Appbar";
+
+
+type uservalueType = { name: string, family: string, age: number }
 
 const Container = () => {
 
-
-
-    let 
-
+    const [uservalue, setuservalue] = useState<uservalueType>({ name: '', family: '', age: 0 })
 
     const logerFunction = (props: string) => console.log('run loger', props)
-
 
     return (
         <>
@@ -17,9 +17,9 @@ const Container = () => {
                 width: "100vw",
                 height: "100vh"
             }}>
-
-
                 <Appbar
+                    uservalue={uservalue}
+                    setuservalue={setuservalue}
                     name="ramin"
                     family="zoodfer"
                     age={28}

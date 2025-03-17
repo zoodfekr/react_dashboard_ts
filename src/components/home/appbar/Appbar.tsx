@@ -1,6 +1,7 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 
 
+type uservalueType = { name: string, family: string, age: number }
 
 type AppbarProps = {
     name: string
@@ -15,7 +16,9 @@ type AppbarProps = {
     children?: ReactNode
     style: React.CSSProperties
     className: string
-    loger: (status: "online" | "offline") => void
+    loger: (status: "online" | "offline") => void,
+    setuservalue: React.Dispatch<React.SetStateAction<uservalueType>>
+    uservalue: uservalueType
 }
 
 
@@ -24,7 +27,10 @@ type stateType = {
     status: boolean
 }
 
-const Appbar: React.FC<AppbarProps> = ({ name, family, status, children, className, style, loger }) => {
+
+const Appbar: React.FC<AppbarProps> = ({
+    name, family, status, children, className, style, loger, uservalue, setuservalue
+}) => {
 
 
     const [state, setstate] = useState<stateType>({ count: 0, status: false })
@@ -36,6 +42,9 @@ const Appbar: React.FC<AppbarProps> = ({ name, family, status, children, classNa
         if (inputref.current) {
             inputref.current.value = "ramin ref test";
         }
+
+
+
     }, []);
 
 
@@ -43,6 +52,17 @@ const Appbar: React.FC<AppbarProps> = ({ name, family, status, children, classNa
     return (
         <>
             <div className={`border bg-stone-900 ${className}`} style={style}>
+
+                <div className="border flex relative p-2 bg-red-200 min-h-20">
+                    <button onClick={() => setuservalue({ name: 'reza', family: 'ahmadi', age: 0 })}>add state</button>
+
+
+                    <div>
+                        {uservalue.family} {uservalue.name}
+                    </div>
+                </div>
+
+
 
 
                 <p>
@@ -71,6 +91,7 @@ const Appbar: React.FC<AppbarProps> = ({ name, family, status, children, classNa
                     >
                     </input>
                 </div>
+
 
                 {children}
             </div >
