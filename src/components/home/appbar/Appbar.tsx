@@ -1,4 +1,6 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react";
+import ButtonComponent from "./ButtonComponent";
+import { Link } from "react-router-dom";
 
 
 type uservalueType = { name: string, family: string, age: number }
@@ -29,7 +31,16 @@ type stateType = {
 
 
 const Appbar: React.FC<AppbarProps> = ({
-    name, family, status, children, className, style, loger, uservalue, setuservalue
+    name,
+    family,
+    status,
+    children,
+    className,
+    style,
+    loger,
+    uservalue,
+    setuservalue
+
 }) => {
 
 
@@ -92,6 +103,10 @@ const Appbar: React.FC<AppbarProps> = ({
                     </input>
                 </div>
 
+
+                <ButtonComponent variant={'a'} ></ButtonComponent>
+                <ButtonComponent variant={'button'} onClick={() => console.log('run')} ></ButtonComponent>
+                <ButtonComponent variant={Link} to={'/home'}></ButtonComponent>
 
                 {children}
             </div >
